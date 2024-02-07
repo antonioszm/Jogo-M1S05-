@@ -14,6 +14,6 @@ public class Jogador {
     }
 
     public static void adicionarTentativas(int tentativas){
-        numeroTentativas -= tentativas;
+        numeroTentativas += tentativas;
     }
 }
