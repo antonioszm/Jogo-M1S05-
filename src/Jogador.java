@@ -1,7 +1,9 @@
+import java.util.ArrayList;
+import java.util.List;
 public class Jogador {
 
     private static String nome;
-    private  static int idade;
+    private static int idade;
     private static int pontuacao;
     private static int numeroTentativas;
 
@@ -12,47 +14,47 @@ public class Jogador {
         this.numeroTentativas = numeroTentativas;
     }
 
-    public static String getNome() {
+    public  String getNome() {
         return nome;
     }
 
-    public static int getIdade() {
+    public  int getIdade() {
         return idade;
     }
 
-    public static int getPontuacao() {
+    public int getPontuacao() {
         return pontuacao;
     }
 
-    public static int getNumeroTentativas() {
+    public  int getNumeroTentativas() {
         return numeroTentativas;
     }
 
-    public static void setNome(String nome) {
+    public  void setNome(String nome) {
         Jogador.nome = nome;
     }
 
-    public static void setIdade(int idade) {
+    public  void setIdade(int idade) {
         Jogador.idade = idade;
     }
 
-    public static void setPontuacao(int pontuacao) {
+    public  void setPontuacao(int pontuacao) {
         Jogador.pontuacao = pontuacao;
     }
 
-    public static void setNumeroTentativas(int numeroTentativas) {
+    public  void setNumeroTentativas(int numeroTentativas) {
         Jogador.numeroTentativas = numeroTentativas;
     }
 
-    public static void addPontos(int pontos){
+    public  void addPontos(int pontos){
         pontuacao += pontos;
     }
 
-    public static void removerPontos(int pontos){
+    public  void removerPontos(int pontos){
         pontuacao -= pontos;
     }
 
-    public static void adicionarTentativas(int tentativas){
+    public  void adicionarTentativas(int tentativas){
         numeroTentativas += tentativas;
     }
 }
