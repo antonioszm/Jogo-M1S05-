@@ -14,4 +14,15 @@ public class Main {
         Jogadores.sort(Comparator.comparingInt(Jogador::getPontuacao).reversed());
 
     }
+
+    public static void exibirTop10(){
+        int posicao = 1;
+        for (Jogador jogador : Jogadores){
+            System.out.println("Jogador: "+ jogador + " - " + posicao);
+            posicao++;
+            if (posicao == 11){
+                break;
+            }
+        }
+    }
 }
