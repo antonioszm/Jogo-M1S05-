@@ -21,7 +21,7 @@ public class Jogo {
             case 2:
                 System.out.println("Você perdeu...");
                 jogador.removerPontos(1);
-                jogador.adicionarTentativas(1);\
+                jogador.adicionarTentativas(1);
                 numeroJogadas++;
                 break;
             case 3:
