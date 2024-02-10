@@ -1,9 +1,14 @@
 import java.util.Random;
+import java.util.Scanner;
+
 public class Jogo {
     private static Jogador melhorJogador;
     private static int numeroJogadas;
 
     public static void jogar(Jogador jogador){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Escolha entre, Pedra, Papel e Tesoura!");
+        String resposta = scanner.next();
         Random random = new Random();
         int escolhaDaMaquina = random.nextInt(1, 3);
         switch (escolhaDaMaquina){
