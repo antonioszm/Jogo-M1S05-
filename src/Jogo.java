@@ -55,9 +55,11 @@ public class Jogo {
             boolean acertou = false;
             if (numeroDigitado == numero) {
                 acertou = true;
+                jogador.addPontos(1);
             }
             if (!acertou) {
                 tentativasRestantes--;
+                jogador.removerPontos(1);
                 System.out.println("Tentativas restantes: " + tentativasRestantes);
             }
         }
