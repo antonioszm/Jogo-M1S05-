@@ -8,8 +8,8 @@ public class Main {
 
 
     public static void main(String[] args) {
-        Jogador jogador = new Jogador("JogadorN-1", 12,0,0);
-        Jogadores.add(jogador);
+        Jogador jogadore = new Jogador("JogadorN-1", 12,0,0);
+        Jogadores.add(jogadore);
         while (true){
         Scanner scanner = new Scanner(System.in);
         System.out.println("====================================================");
@@ -58,21 +58,25 @@ public class Main {
             String nome = scanner.next();
             System.out.print("Digite sua idade!: ");
             int idade = scanner.nextInt();
+            boolean estaEmUso = false;
 
 
             for (Jogador jogador1 : Jogadores){
                 if (nome.equals(jogador1.getNome())){ // if para checar se o nome ja está cadastrado
-                    System.out.println("Esse nome já está em uso. Tente outro!");
-                    System.out.print("Novo nome: ");
+                    estaEmUso = true;
                 }  //se n for ele cria o jogador
-
-                if (!nome.equals(jogador1.getNome())){
-                    Jogador jogador = new Jogador(nome, idade, 0,0);
-                    Jogadores.add(jogador);
-                    Jogadores.sort(Comparator.comparingInt(Jogador::getPontuacao).reversed());
-                    return jogador;
-                }
             }
+            if (estaEmUso){
+                System.out.println("Esse nome já está em uso. Tente outro!");
+                System.out.print("Novo nome: ");
+                nome = scanner.next();
+            }
+            if (!estaEmUso){
+                Jogador jogador = new Jogador(nome, idade, 0,0);
+                Jogadores.add(jogador);
+                Jogadores.sort(Comparator.comparingInt(Jogador::getPontuacao).reversed());
+                return jogador;
+        }
         return null;
     }
     public static Jogador pegarJogador(){
@@ -94,7 +98,8 @@ public class Main {
     public static void exibirTop10(){
         int posicao = 1;
         for (Jogador jogador : Jogadores){
-            System.out.println("Jogador: "+ jogador.getNome() + " - " + posicao+"°");
+            String nome =jogador.getNome();
+            System.out.println("Jogador: "+nome  + " - " + posicao+"°" );
             posicao++;
             if (posicao == 11){ // termina o for so com 10
                 break;
@@ -103,9 +108,11 @@ public class Main {
     }
     public static void exibirLista(){
         int posicao = 1;
-        for (int i = 0; i < Jogadores.size(); i++){
-            Jogador jogador = Jogadores.get(i);
-            System.out.println("Jogador: "+ jogador.getNome() + " - " + posicao+"°");
+        String nome;
+        for (Jogador jogador : Jogadores){
+            System.out.println(Jogadores);
+             nome = jogador.getNome();
+            System.out.println("Jogador: "+ nome + " - " + posicao+"°" + jogador.getIdade());
             posicao++;
         }
     }
