@@ -49,7 +49,7 @@ public class Jogo {
         System.out.println("Errou");
         int tentativasRestantes = 10;
 
-        while (tentativasRestantes > 0) {
+        while (tentativasRestantes > 1) {
             System.out.println("Tentativas restantes: " + tentativasRestantes);
 
             boolean acertou = false;

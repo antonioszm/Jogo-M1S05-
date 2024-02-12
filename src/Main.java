@@ -4,12 +4,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    public static List<Jogador> Jogadores = new ArrayList<>();
+
 
 
     public static void main(String[] args) {
-        Jogador jogadore = new Jogador("JogadorN-1", 12,0,0);
-        Jogadores.add(jogadore);
+
         while (true){
         Scanner scanner = new Scanner(System.in);
         System.out.println("====================================================");
@@ -24,7 +23,7 @@ public class Main {
 
         switch (resposta) {
             case 1:
-                criarJogador();
+                Jogador.criarJogador();
                 break;
             case 2:
                 System.out.println("===========================================");
@@ -36,84 +35,16 @@ public class Main {
                 System.out.print("Escolha uma opção: ");
                 int resposta2 = scanner.nextInt();
                 if (resposta2 == 1) {
-                    Jogo.jogar(pegarJogador());
+                    Jogo.jogar(Jogador.pegarJogador());
                     encaceramento();
                 } else {
                     System.out.println("Digite o numero limite!");
                     int num = scanner.nextInt();
-                    Jogo.jogar(pegarJogador(), num);
+                    Jogo.jogar(Jogador.pegarJogador(), num);
                     encaceramento();
                 }
                 break;
             }
-        }
-
-
-    }
-
-
-    public static Jogador criarJogador(){
-            Scanner scanner = new Scanner(System.in);
-            System.out.print("Digite seu nome!: ");
-            String nome = scanner.next();
-            System.out.print("Digite sua idade!: ");
-            int idade = scanner.nextInt();
-            boolean estaEmUso = false;
-
-
-            for (Jogador jogador1 : Jogadores){
-                if (nome.equals(jogador1.getNome())){ // if para checar se o nome ja está cadastrado
-                    estaEmUso = true;
-                }  //se n for ele cria o jogador
-            }
-            if (estaEmUso){
-                System.out.println("Esse nome já está em uso. Tente outro!");
-                System.out.print("Novo nome: ");
-                nome = scanner.next();
-            }
-            if (!estaEmUso){
-                Jogador jogador = new Jogador(nome, idade, 0,0);
-                Jogadores.add(jogador);
-                Jogadores.sort(Comparator.comparingInt(Jogador::getPontuacao).reversed());
-                return jogador;
-        }
-        return null;
-    }
-    public static Jogador pegarJogador(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Digite o nome da sua conta!: ");
-        String nome = scanner.next();
-        for (Jogador jogador1 : Jogadores){
-            if (!(nome.equals(jogador1.getNome()))){
-                System.out.println("Não cadastrado!");
-                System.out.println("Crie um!");
-                criarJogador();
-            }
-            if (nome.equals(jogador1.getNome())){ // if para checar se o nome ja está cadastrado
-                return jogador1;
-            }
-        }
-        return null;
-    }
-    public static void exibirTop10(){
-        int posicao = 1;
-        for (Jogador jogador : Jogadores){
-            String nome =jogador.getNome();
-            System.out.println("Jogador: "+nome  + " - " + posicao+"°" );
-            posicao++;
-            if (posicao == 11){ // termina o for so com 10
-                break;
-            }
-        }
-    }
-    public static void exibirLista(){
-        int posicao = 1;
-        String nome;
-        for (Jogador jogador : Jogadores){
-            System.out.println(Jogadores);
-             nome = jogador.getNome();
-            System.out.println("Jogador: "+ nome + " - " + posicao+"°" + jogador.getIdade());
-            posicao++;
         }
     }
 
@@ -133,10 +64,10 @@ public class Main {
 
         switch (resposta) {
             case 1:
-                exibirTop10();
+                Jogador.exibirTop10();
                 break;
             case 2:
-                exibirLista();
+                Jogador.exibirLista();
                 break;
             case 3:
                 System.out.println("===========================================");
@@ -148,13 +79,13 @@ public class Main {
                 System.out.print("Escolha uma opção: ");
                 int resposta2 = scanner.nextInt();
                 if (resposta2 == 1) {
-                    Jogo.jogar(pegarJogador());
+                    Jogo.jogar(Jogador.pegarJogador());
                     encaceramento();
                 } else {
                     System.out.println("Digite o numero limite!");
                     int num = scanner.nextInt();
-                    pegarJogador();
-                    Jogo.jogar(pegarJogador(), num);
+                    Jogador.pegarJogador();
+                    Jogo.jogar(Jogador.pegarJogador(), num);
                     encaceramento();
                 }
                 break;

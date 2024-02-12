@@ -1,12 +1,17 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Scanner;
 
 public class Jogador {
 
-    private static String nome;
-    private static int idade;
-    private static int pontuacao;
-    private static int numeroTentativas;
+    private  String nome;
+    private  int idade;
+    private  int pontuacao;
+    private  int numeroTentativas;
+
+    public static List<Jogador> Jogadores = new ArrayList<>();
+
 
     public Jogador(String nome, int idade, int pontuacao, int numeroTentativas) {
         this.nome = nome;
@@ -32,19 +37,19 @@ public class Jogador {
     }
 
     public  void setNome(String nome) {
-        Jogador.nome = nome;
+        this.nome = nome;
     }
 
     public  void setIdade(int idade) {
-        Jogador.idade = idade;
+        this.idade = idade;
     }
 
     public  void setPontuacao(int pontuacao) {
-        Jogador.pontuacao = pontuacao;
+        this.pontuacao = pontuacao;
     }
 
     public  void setNumeroTentativas(int numeroTentativas) {
-        Jogador.numeroTentativas = numeroTentativas;
+        this.numeroTentativas = numeroTentativas;
     }
 
     public  void addPontos(int pontos){
@@ -57,6 +62,108 @@ public class Jogador {
 
     public  void adicionarTentativas(int tentativas){
         numeroTentativas += tentativas;
+    }
+
+    public static void criarJogador(){
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite seu nome!: ");
+        String nome = scanner.next();
+        System.out.print("Digite sua idade!: ");
+        int idade = scanner.nextInt();
+        boolean estaEmUso;
+
+        do {
+            estaEmUso = false;
+
+            for (Jogador jogador : Jogadores) {
+                if (nome.equals(jogador.getNome())) {
+                    estaEmUso = true;
+                    System.out.println("Esse nome já está em uso. Tente outro!");
+                    System.out.print("Novo nome: ");
+                    nome = scanner.next();
+                    break;
+                }
+            }
+            if (!estaEmUso){
+                Jogador novoJogador = new Jogador(nome, idade, 0,0); //ESTA SOBRESCREVENDO
+                Jogadores.add(novoJogador);
+                Jogadores.sort(Comparator.comparingInt(Jogador::getPontuacao).reversed());
+            }
+
+        } while (estaEmUso);
+
+
+    }
+    public static Jogador pegarJogador(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite o nome da sua conta!: ");
+        String nome = scanner.next();
+        boolean estaCadastrado;
+        do {
+            estaCadastrado = false;
+
+            for (Jogador jogador : Jogadores) {
+                if (nome.equals(jogador.getNome())) {
+                    return jogador;
+                }
+            }
+            if (!estaCadastrado){
+                System.out.println("Não cadastrado!");
+                System.out.println("Crie um!");
+                System.out.print("Digite seu nome!: ");
+                nome = scanner.next();
+                System.out.print("Digite sua idade!: ");
+                int idade = scanner.nextInt();
+                boolean estaEmUso;
+
+                do {
+                    estaEmUso = false;
+
+                    for (Jogador jogador : Jogadores) {
+                        if (nome.equals(jogador.getNome())) {
+                            estaEmUso = true;
+                            System.out.println("Esse nome já está em uso. Tente outro!");
+                            System.out.print("Novo nome: ");
+                            nome = scanner.next();
+                            break;
+                        }
+                    }
+
+
+                } while (estaEmUso);
+
+                Jogador novoJogador = new Jogador(nome, idade, 0,0); //ESTA SOBRESCREVENDO
+                System.out.println(novoJogador.getNome());
+                Jogadores.add(novoJogador);
+                System.out.println(Jogadores.get(0).getNome());
+                if (Jogadores.size() == 2){
+                    System.out.println(Jogadores.get(1).getNome());
+                }
+                Jogadores.sort(Comparator.comparingInt(Jogador::getPontuacao).reversed());
+                return novoJogador;
+            }
+
+        } while (estaCadastrado);
+        return null;
+    }
+    public static void exibirTop10(){
+        int posicao = 1;
+        for (int i =0; i < Jogadores.size(); i++){
+            String nome = Jogadores.get(i).getNome();
+            System.out.println("Jogador: "+nome  + " - " + posicao+"°" );
+            posicao++;
+            if (posicao == 11){ // termina o for so com 10
+                break;
+            }
+        }
+    }
+    public static void exibirLista(){
+        int posicao = 1;
+        for (Jogador jogador : Jogadores){
+            System.out.println("Jogador: "+ jogador.getNome() + " - " + posicao+"°");
+            posicao++;
+        }
     }
 
 }
