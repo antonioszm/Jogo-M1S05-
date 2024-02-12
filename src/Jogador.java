@@ -134,12 +134,7 @@ public class Jogador {
                 } while (estaEmUso);
 
                 Jogador novoJogador = new Jogador(nome, idade, 0,0); //ESTA SOBRESCREVENDO
-                System.out.println(novoJogador.getNome());
                 Jogadores.add(novoJogador);
-                System.out.println(Jogadores.get(0).getNome());
-                if (Jogadores.size() == 2){
-                    System.out.println(Jogadores.get(1).getNome());
-                }
                 Jogadores.sort(Comparator.comparingInt(Jogador::getPontuacao).reversed());
                 return novoJogador;
             }
