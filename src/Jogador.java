@@ -15,7 +15,7 @@ public class Jogador {
         this.numeroTentativas = numeroTentativas;
     }
 
-    public static String getNome() {
+    public  String getNome() {
         return nome;
     }
 
@@ -58,4 +58,5 @@ public class Jogador {
     public  void adicionarTentativas(int tentativas){
         numeroTentativas += tentativas;
     }
+
 }

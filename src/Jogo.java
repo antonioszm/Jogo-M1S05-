@@ -56,6 +56,7 @@ public class Jogo {
             if (numeroDigitado == numero) {
                 acertou = true;
                 jogador.addPontos(1);
+                break;
             }
             if (!acertou) {
                 tentativasRestantes--;

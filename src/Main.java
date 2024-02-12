@@ -8,7 +8,7 @@ public class Main {
 
 
     public static void main(String[] args) {
-        Jogador jogador = new Jogador("A", 12,0,0);
+        Jogador jogador = new Jogador("JogadorN-1", 12,0,0);
         Jogadores.add(jogador);
         while (true){
         Scanner scanner = new Scanner(System.in);
@@ -51,23 +51,7 @@ public class Main {
 
     }
 
-    public static void exibirTop10(){
-        int posicao = 1;
-        for (Jogador jogador : Jogadores){
-            System.out.println("Jogador: "+ jogador.getNome() + " - " + posicao+"°");
-            posicao++;
-            if (posicao == 11){ // termina o for so com 10
-                break;
-            }
-        }
-    }
-    public static void exibirLista(){
-        int posicao = 1;
-        for (Jogador jogador : Jogadores){
-            System.out.println("Jogador: "+ jogador.getNome() + " - " + posicao+"°");
-            posicao++;
-        }
-    }
+
     public static Jogador criarJogador(){
             Scanner scanner = new Scanner(System.in);
             System.out.print("Digite seu nome!: ");
@@ -106,6 +90,24 @@ public class Main {
             }
         }
         return null;
+    }
+    public static void exibirTop10(){
+        int posicao = 1;
+        for (Jogador jogador : Jogadores){
+            System.out.println("Jogador: "+ jogador.getNome() + " - " + posicao+"°");
+            posicao++;
+            if (posicao == 11){ // termina o for so com 10
+                break;
+            }
+        }
+    }
+    public static void exibirLista(){
+        int posicao = 1;
+        for (int i = 0; i < Jogadores.size(); i++){
+            Jogador jogador = Jogadores.get(i);
+            System.out.println("Jogador: "+ jogador.getNome() + " - " + posicao+"°");
+            posicao++;
+        }
     }
 
     public static void encaceramento(){
